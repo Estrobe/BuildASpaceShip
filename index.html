@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Build A Spaceship!</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <link rel="shortcut icon" type="image/png" href="https://cdn2.iconfinder.com/data/icons/science-solid-icons-vol-1/48/010-512.png"/>
+</head>
+<body class="stars">
+
+<link rel="stylesheet" type="text/css" href="style.css">
+  <div style="height: 0%; background: transparent"></div>
+
+<!-- The Modal -->
+<div id="popup" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">×</span>
+      <h2 style="text-align:center">Welcome</h2>
+    </div>
+    <div style="text-align:center"class="modal-body">
+      <p>You heard from the news that a perfect exoplanet was found only 500 000 000 meters away from earth. You want to build a ship to get there first.</p>
+      <br>
+      <p>Start by buying a rocket and a ship and press the LAUNCH button.</p>
+      <p>You can upgrade your ship while on air but you need to be on earth to buy new parts.</p>
+      <p></p>
+    </div>
+  </div>
+
+</div>
+  <div style="text-align:center">
+    <img src="Untitled_000001.png" style="width: 400px">
+  </div>
+  <div class="tabswitcher">
+    <button class="tabbutton" id="yourship">Your ship</button>
+    <button class="tabbutton" id="statbutton">Statistics</button>
+    <button class="tabbutton" id="achievementbutton">Achievements</button>
+    <button class="tabbutton" id="optionsbutton">Options</button>
+  </div>
+  
+  
+<div id="wrapper">
+  <div id="game" class="tab">
+  
+    <div id="main">
+      <div id="meters" style="text-align:center" >You have travelled 0 meters.</div>
+      <div id="speed" style="text-align:center" >0 m/s</div>
+      <p id="funds" style="text-align:center" ach-tooltip="You get money for each meter you have travelled per second.">
+        You get 0.1 € per second for each meter travelled.
+          </p>
+      <p>
+      <div id="money" style="font-family:Tahoma;font-size:40px;text-align:center">0 €</div>
+      <button id="buyMax" class="button" style="width:150px">Max everything</button>
+      <div style="text-align:center">
+        <button class="button" id="rockets" >10 € for Bottle rocket.</button>
+        <button data-tooltip="Multiplies your speed by 1.5" class="button" id="rocketUpdate">20 € to update your rockets</button>
+        <span id="rocketUpdateAmount">0/5</span>
+      </div>
+      <div style="text-align:center">
+        <button class="button" id="ship" >10 € for Cardboard box ship.</button>
+        <button data-tooltip="Adds 0.1 * ship level * ship upgrades to your base speed" class="button" id="shipUpdate">20 € to update your wings.</button>
+        <span id="shipUpdateAmount">0/5</span>
+      </div>
+      <div style="text-align:center">
+        <button class="button" id="wings">25 € for Paper wings.</button>
+        <button data-tooltip="Multiplies your speed by 1.2" class="button" id="wingUpdate">40 € to update your wings</button>
+        <span id="wingUpdateAmount">0/5</span>
+      </div>
+      <div>
+        <button id="resetButton" class="button" style="visibility:hidden">Start a new colony.</button>
+      </div>
+  
+      <div style="text-align: center">
+        <button data-tooltip="You can only buy new parts while on earth."class="button" id="launch">LAUNCH</button>  
+      </div>
+    </div>
+  </div>
+   <div id="shipContainer" class="container">
+     <div>
+     <span id="arrival">Arrival in:</span>
+     </div>
+    <img id="planet" src="http://img02.deviantart.net/a326/i/2015/226/b/0/habitable_exoplanet_by_emperorkk-d95mlty.png" style="width:120px">
+    <img id="shipDisplay" src="http://www.freeiconspng.com/uploads/spaceship-png-icon-8.png" class="ship">
+  </div>
+  <div id="prestigeUpgrades">
+    <table>
+      <div id="prestige"></div> 
+    <tr>
+      <td><button id="speedMultiplier" class="button" prstg-tooltip="Multiplies your speed by 3.">Human slavery</button>
+      <td ><span id="slaveryCost">Cost: 10 refugees</span>
+    </tr>
+    <tr>
+      <td><button id="baseMultiplier" class="button" prstg-tooltip="Multiplies your money income by 3">Capitalism</button>
+      <td><span id="capitalismCost">Cost: 50 K refugees</span>
+    </tr>
+    </table>
+  </div>
+  
+</div>
+      
+
+  <div id="wrapper">
+  <div id="achievements" class="tab" style="background: transparent; border: none">
+    <div class="achievement" id="firstAchievement" ach-tooltip="Travel 10 meters.">I can still see you</div>
+    <div class="achievement" id="secondAchievement" ach-tooltip="Travel at the speed of sound.">I can still hear you</div>
+    <div class="achievement" id="thirdAchievement" ach-tooltip="Travel 50 kilometers.">You have reached the edge of the stratosphere.</div>
+    <div class="achievement" id="fourthAchievement" ach-tooltip="Travel to the moon.">Neil Armstrong all over again.</div>
+    <div class="achievement" id="fifthAchievement" ach-tooltip="Travel at the speed of light.">You're going faster than light. You hacker.</div>
+    <div class="achievement" id="sixthAchievement" ach-tooltip="Travel 1 astronomical unit.">Don't go too close to the sun.</div>
+    <div class="achievement" id="seventhAchievement" ach-tooltip="Travel a light-year. Duh.">Wow! You have travelled a light-year!</div>
+    <div class="achievement" id="eightAchievement" ach-tooltip="Travel a light-millenium.">Millenium? That's like a thousand years!</div>
+    <div class="achievement" id="ninthAchievement" ach-tooltip="Travel to the edge of the observable universe.">So this is The Edge?</div>
+    
+  </div>
+  </div>
+  <div id="wrapper">
+  <div id="statistics" class="tab">
+    <div id="baseSpeed"></div>
+    <div id="statRockets"></div>
+    <div id="statShips"></div>
+    <div id="statWings"></div>
+    <div id="totalMoney"></div>
+    <div id="totalDistance"></div>
+    <div id="bestDistance"></div>
+    <div id="achievementAmount"></div>
+    <div id="nextPlanet"></div>
+    <div id="refugeesOnPrestige"></div>
+    <br>
+    <div id="fundStats"></div>
+    <div style="text-align:center"><button id="hardReset"class="button">HARD RESET</button></div>
+  </div>
+  </div>
+  
+  
+    <div id="wrapper">
+    <div id="options" class="tab">
+      <div><button id="twinklingbtn"class="button">Toggle background animation</button></div>
+       
+      <div><button id="notationbtn"class="button">Toggle scientific/short scale notations</button></div>
+      
+    
+    </div>
+  </div>
+  <div id="achievementBox">text</div>
+  <div class="twinkling"></div>
+<script src="game.js"></script>
+ <div style="text-align:center;font-size:160%; bottom:0px; position:relative; width:100%;">
+    <a href="https://rawgit.com/IvarK/BuildASpaceShip/master/changelog.html" target="_newtab">Changelog</a>   |
+    <a href="https://www.reddit.com/r/incremental_games/comments/53smbi/build_a_spaceship/" target="_newtab">Reddit</a>   |
+    <a href="http://ivark.github.io/about.html" target="_newtab">About me</a>
+  </div>
+</body>
+</html>
+  
+  
+  
